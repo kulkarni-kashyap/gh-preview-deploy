@@ -22,7 +22,6 @@ jobs:
         with:
           branch: master
           folder: docs
-          target-folder: ${{ steps.generate_slug.outputs.slug }}
       - name: Publish env
         uses: marocchino/sticky-pull-request-comment@v2
         with:
