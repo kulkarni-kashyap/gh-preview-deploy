@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 14.15
       - name: Build
-        run: npm ci && npm run build
+        run: npm i && npm run build
         env:
           VUEPRESS_BASE: ${{ format('{0}{1}/', '/gh-preview-deploy/', env.PR_NUMBER) }}
       - name: Deploy
