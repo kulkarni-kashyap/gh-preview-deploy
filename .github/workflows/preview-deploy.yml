@@ -6,9 +6,6 @@ on:
 env:
   PR_NUMBER: ${{ github.event.pull_request.number }}
 
-env:
-  VUEPRESS_BASE: `/gh-preview-deploy/${{ env.PR_NUMBER }}`
-
 jobs:
   deploy:
     runs-on: ubuntu-20.04
@@ -23,11 +20,15 @@ jobs:
       - name: Generate slug
         id: generate_slug
         run: echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
+      - name: Build
+        run: npm ci && npm run build
+        env:
+          VUEPRESS_BASE: ${{ format('{0}{1}/', '/gh-preview-deploy/', env.PR_NUMBER) }}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
           branch: master
-          folder: docs
+          folder: www-dist
           target-folder: ${{ env.PR_NUMBER }}
       - name: Publish env
         uses: marocchino/sticky-pull-request-comment@v2

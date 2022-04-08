@@ -1,0 +1,4 @@
+/components*
+/.vuepress/public/crayons*
+/.vuepress/public/css*
+/core*
