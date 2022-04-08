@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Use node.js 14.15
+      - name: Use node.js 14.17.0
         uses: actions/setup-node@v1
         with:
-          node-version: 14.15
+          node-version: 14.17.0
       - name: Build
         run: npm i && npm run build
         env:
