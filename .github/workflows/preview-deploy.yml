@@ -17,9 +17,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.15
-      - name: Generate slug
-        id: generate_slug
-        run: echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
       - name: Build
         run: npm ci && npm run build
         env:
