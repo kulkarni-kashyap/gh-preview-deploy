@@ -5,9 +5,7 @@ on:
 
 env:
   PR_NUMBER: ${{ github.event.pull_request.number }}
-
-env:
-  VUEPRESS_BASE: `/gh-preview-deploy/${{ env.PR_NUMBER }}`
+  VUEPRESS_BASE: /gh-preview-deploy/${{ env.PR_NUMBER }}/
 
 jobs:
   deploy:
