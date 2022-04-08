@@ -11,16 +11,24 @@ jobs:
     runs-on: ubuntu-20.04
     continue-on-error: true
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Use node.js 14.17.0
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
         with:
-          node-version: 14.17.0
+          node-version: "14.x"
+
+      - name: Install npm 7
+        run: npm i -g npm@7
+
+      # Installs the dependencies
+      - name: Install Dependencies
+        run: npm install
+
       - name: Build
-        run: npm i && npm run build
+        run: npm run build
         env:
           VUEPRESS_BASE: ${{ format('{0}{1}/', '/gh-preview-deploy/', env.PR_NUMBER) }}
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
