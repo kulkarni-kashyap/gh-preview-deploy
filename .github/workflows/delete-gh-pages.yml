@@ -11,11 +11,11 @@ env:
 
 jobs:
   remove:
-  runs-on: ubuntu-20.04
-  continue-on-error: true
-  if: github.event.pull_request.merged == true
-  steps:
-    - name: Remove File
-      uses: JesseTG/rm@v1.0.2
-      with:
-        path: ${{ env.PR_NUMBER }}
+    runs-on: ubuntu-20.04
+    continue-on-error: true
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Remove File
+        uses: JesseTG/rm@v1.0.2
+        with:
+          path: ${{ env.PR_NUMBER }}
