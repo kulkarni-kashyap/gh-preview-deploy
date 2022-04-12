@@ -21,6 +21,6 @@ jobs:
           ref: master
 
       - name: Remove File
-        uses: JesseTG/rm@v1.0.2
-        with:
-          path: ${{ env.PR_NUMBER }}
+        run: ./delete-docs.sh ${{env.PR_NUMBER}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
