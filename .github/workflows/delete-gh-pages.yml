@@ -20,6 +20,9 @@ jobs:
         with:
           ref: master
 
+      - name: Set Git Config
+        run: git config --global user.email "kulkarni.kashyap@freshworks.com" && git config --global user.name "kulkarni.kashyap"
+
       - name: Remove File
         run: ./delete-docs.sh ${{env.PR_NUMBER}}
         env:
